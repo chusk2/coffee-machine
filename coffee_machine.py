@@ -130,20 +130,23 @@ class CoffeeMachine:
         """
         Subtracts ingredients from coffee machine
         :param coffee_type:
-        :return: none
+        :return: dict with updated resources values
         """
         # subtract the following amounts from available resources
         self.water -= coffee_type.water
         self.milk -= coffee_type.milk
         self.coffee -= coffee_type.coffee
         print(f"Your {coffee_type.name.title()} is ready. Enjoy it!\n")
-        self.resources = {'Water': [self.water, 'mL'],
-                          'Milk': [self.milk, 'mL'],
-                          'Coffee': [self.coffee, 'g'],
-                          'Money': [self.money_in_box, '€']
-                          }
+        # create a new resources dict with the updated values
+        resources = {'Water': [self.water, 'mL'],
+                     'Milk': [self.milk, 'mL'],
+                     'Coffee': [self.coffee, 'g'],
+                     'Money': [self.money_in_box, '€']
+                     }
+        return resources
 
-    def count_coins(self):
+    @staticmethod
+    def count_coins():
         """
         asks for amount of every kind of coin
         :return: inserted_money
@@ -228,7 +231,9 @@ while True:
             # check if price <= entered money
             change = my_vending.check_enough_money(chosen_coffee, inserted_money)
             if change != -1:
-                my_vending.serve(chosen_coffee)
+                # update machine self.resources by reassigning them with
+                # the return of the self.serve function
+                my_vending.resources = my_vending.serve(chosen_coffee)
                 if change != 0:
                     print(f"And don't forget your change! {change:.2f} €\n")
             else:
