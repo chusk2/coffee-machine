@@ -20,7 +20,9 @@ cappuccino = CoffeeType(name="Cappuccino", water=250, milk=50, coffee=24, price=
 MENU = [latte, espresso, cappuccino]
 
 # define the class Coffee_machine
-class Coffee_machine:
+
+
+class CoffeeMachine:
     def __init__(self):
         self.water = 2000
         self.milk = 2000
@@ -207,11 +209,12 @@ class Coffee_machine:
                     return -1
 
 
-my_vending = Coffee_machine()
+my_vending = CoffeeMachine()
 
 while True:
 
     chosen_coffee = my_vending.ask_drink()
+    # turn off machine
     if chosen_coffee == 'switch off':
         print('Turning off the coffee machine...')
         time.sleep(1)
