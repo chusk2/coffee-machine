@@ -12,6 +12,7 @@ class CoffeeType:
 
 # create three instances of coffee
 
+
 latte = CoffeeType(name="Latte", water=200, milk=150, coffee=24, price=2.5)
 espresso = CoffeeType(name="Espresso", water=50, milk=0, coffee=18, price=1.5)
 cappuccino = CoffeeType(name="Cappuccino", water=250, milk=50, coffee=24, price=3)
@@ -21,7 +22,7 @@ MENU = [latte, espresso, cappuccino]
 # define the class Coffee_machine
 class Coffee_machine:
     def __init__(self):
-        self.water = 300
+        self.water = 2000
         self.milk = 2000
         self.money_in_box = 0
         self.coffee = 1000
